@@ -1,0 +1,198 @@
+<!-- profile.component.html -->
+<div class="profile-container">
+  <!-- Header bar -->
+  <app-navigation></app-navigation>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <section class="profile-header">
+      <div class="title-container">
+        <h1>Profile Management</h1>
+        <p class="subtitle">
+          Complete your profile to improve your job matches
+        </p>
+      </div>
+
+      <div class="completeness-container">
+        <p>Profile Completeness</p>
+        <div class="progress-container">
+          <div class="progress-bar" [style.width.%]="profileCompleteness"></div>
+        </div>
+        <span class="completeness-percentage">{{ profileCompleteness }}%</span>
+      </div>
+    </section>
+
+    <form [formGroup]="profileForm" class="profile-form">
+      <!-- Personal Information -->
+      <section class="form-section">
+        <h2>Personal Information</h2>
+        <div class="personal-info-container">
+          <div class="photo-container">
+            <div class="profile-photo">
+              <span>JS</span>
+            </div>
+            <button type="button" class="upload-button" (click)="uploadPhoto()">
+              Upload
+            </button>
+          </div>
+
+          <div class="personal-details">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  formControlName="firstName"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  formControlName="lastName"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input
+                  type="text"
+                  id="dateOfBirth"
+                  formControlName="dateOfBirth"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  formControlName="phone"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group full-width">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  formControlName="location"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professional Summary -->
+      <section class="form-section">
+        <h2>Professional Summary</h2>
+        <div class="form-group">
+          <textarea
+            formControlName="professionalSummary"
+            class="form-control summary-textarea"
+          ></textarea>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2>Experience</h2>
+          <button type="button" class="add-button" (click)="addExperience()">
+            + Add
+          </button>
+        </div>
+
+        <div class="experience-list">
+          <div class="experience-item" *ngFor="let exp of experiences">
+            <div class="experience-content">
+              <h3>{{ exp.title }}</h3>
+              <p class="company">{{ exp.company }}</p>
+              <p class="duration">
+                {{ exp.startDate }} - {{ exp.endDate }} , {{ exp.duration }}
+              </p>
+            </div>
+            <div class="location-container">
+              <p class="location">{{ exp.location }}</p>
+            </div>
+            <div class="actions">
+              <button type="button" class="menu-button">⋮</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="form-section">
+        <div class="section-header">
+          <h2>Education</h2>
+          <button type="button" class="add-button" (click)="addEducation()">
+            + Add
+          </button>
+        </div>
+
+        <div class="education-list">
+          <div class="education-item" *ngFor="let edu of education">
+            <div class="education-content">
+              <h3>{{ edu.degree }}</h3>
+              <p class="institution">{{ edu.institution }}</p>
+              <p class="years">{{ edu.years }}</p>
+            </div>
+            <div class="location-container">
+              <p class="location">{{ edu.location }}</p>
+            </div>
+            <div class="actions">
+              <button type="button" class="menu-button">⋮</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resume/CV -->
+      <section class="form-section">
+        <h2>Resume/CV</h2>
+        <div class="resume-container">
+          <div class="resume-file">
+            <span>{{ resumeFileName }}</span>
+          </div>
+          <div class="resume-actions">
+            <button
+              type="button"
+              class="replace-button"
+              (click)="replaceResume()"
+            >
+              Replace
+            </button>
+            <button
+              type="button"
+              class="download-button"
+              (click)="downloadResume()"
+            >
+              Download
+            </button>
+          </div>
+        </div>
+      </section>
+    </form>
+  </main>
+</div>

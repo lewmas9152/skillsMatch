@@ -1,0 +1,120 @@
+<div class="dashboard-container">
+  <!-- Include the navigation component -->
+  <app-navigation></app-navigation>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+      <!-- Welcome Section -->
+      <div class="card welcome-card">
+        <h1>Welcome back, {{ userName }}!</h1>
+        <p>You have {{ newMatches }} new job matches and {{ updatesCount }} application updates</p>
+        
+        <div class="stats-container">
+          <div class="stat-box blue">
+            <h2>{{ newMatches }}</h2>
+            <p>New Matches</p>
+          </div>
+          
+          <div class="stat-box green">
+            <h2>{{ updatesCount }}</h2>
+            <p>Updates</p>
+          </div>
+          
+          <div class="stat-box pink">
+            <h2>{{ interviewsCount }}</h2>
+            <p>Interviews</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Strength Card -->
+      <div class="card profile-strength">
+        <h2>Profile Strength</h2>
+        <div class="progress-bar">
+          <div class="progress" [style.width.%]="profileStrength"></div>
+        </div>
+        <p>{{ profileStrength }}% Complete <a href="#" (click)="addMissingSkills()">Add Missing Skills</a></p>
+      </div>
+
+      <!-- Job Matches -->
+      <div class="card job-matches">
+        <h2>Recent Job Matches</h2>
+        
+        <div class="job-list">
+          <div class="job-item" *ngFor="let job of jobMatches">
+            <div class="company-logo" [style.background-color]="job.id === '2' ? '#5067ED' : '#4794F8'">
+              {{ job.companyInitials }}
+            </div>
+            
+            <div class="job-details">
+              <h3>{{ job.position }}</h3>
+              <p class="company">{{ job.company }}</p>
+              <p class="location">{{ job.location }}</p>
+              
+              <div class="skills">
+                <span class="skill-tag" *ngFor="let skill of job.skills">{{ skill }}</span>
+              </div>
+            </div>
+            
+            <div class="match-percentage">
+              <span class="percentage">{{ job.matchPercentage }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Application Status -->
+      <div class="card application-status">
+        <h2>Application Status</h2>
+        <div class="donut-chart">
+          <!-- This would be replaced with a proper chart component -->
+          <div class="chart-placeholder"></div>
+          
+          <div class="status-legend">
+            <div class="status-item">
+              <div class="status-color green"></div>
+              <p>{{ applicationStatus.offers }} Offers</p>
+            </div>
+            
+            <div class="status-item">
+              <div class="status-color orange"></div>
+              <p>{{ applicationStatus.interviews }} Interviews</p>
+            </div>
+            
+            <div class="status-item">
+              <div class="status-color orange-light"></div>
+              <p>{{ applicationStatus.inReview }} In Review</p>
+            </div>
+            
+            <div class="status-item">
+              <div class="status-color orange-dark"></div>
+              <p>{{ applicationStatus.rejected }} Rejected</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Interviews -->
+      <div class="card upcoming-interviews">
+        <h2>Upcoming Interviews</h2>
+        
+        <div class="interview-list">
+          <div class="interview-item" *ngFor="let interview of upcomingInterviews">
+            <div class="interview-details">
+              <h3>{{ interview.company }}</h3>
+              <p>{{ interview.date }}, {{ interview.time }}</p>
+            </div>
+            
+            <div class="interview-status">
+              <span class="status-icon" [ngClass]="{'green': interview.company === 'TechCorp Inc.', 'blue': interview.company === 'InnoDesign Studio'}">
+                {{ interview.company === 'TechCorp Inc.' ? '✓' : '→' }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

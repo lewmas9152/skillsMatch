@@ -1,0 +1,71 @@
+<!-- skills.component.html -->
+<div class="job-matcher-container">
+    <!-- Sidebar would be in a parent component in a real app -->
+   <app-navigation></app-navigation>
+  
+    <div class="main-content">
+      
+  
+      <div class="skills-container">
+        <h1>Skill Management</h1>
+        <p class="subtitle">Update your skills to improve job matching</p>
+  
+        <div class="skill-gap-container">
+          <div class="skill-gap-section">
+            <h2>Skill Gap Analysis</h2>
+            <p>Based on your target role: {{ targetRole }}</p>
+  
+            <div class="skill-gap" *ngFor="let gap of skillGaps">
+              <div class="skill-name">{{ gap.name }}</div>
+              <div class="progress-container">
+                <div class="progress-bar" [style.width.%]="gap.percentage"></div>
+              </div>
+              <div class="percentage">{{ gap.percentage }}%</div>
+            </div>
+          </div>
+  
+          <div class="recommended-skills">
+            <h2>Recommended Skills</h2>
+            <div class="skills-pill-container">
+              <div class="skill-pill" *ngFor="let skill of recommendedSkills">
+                {{ skill }}
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="add-skill-section">
+          <div class="add-skill-title">Add New Skill</div>
+          <div class="add-skill-input">
+            <input type="text" placeholder="Search for a skill..." [(ngModel)]="searchSkill" />
+          </div>
+          <button class="add-button" (click)="addSkill()">+Add Skill</button>
+        </div>
+  
+        <div class="skill-categories">
+          <div *ngFor="let category of skillCategories" 
+               [class.active]="selectedSkillCategory === category" 
+               class="category-tab"
+               (click)="selectCategory(category)">
+            {{ category }}
+          </div>
+        </div>
+  
+        <div class="skills-list">
+          <div class="skill-item" *ngFor="let skill of currentSkills">
+            <div class="skill-detail">
+              <div class="skill-name">{{ skill.name }}</div>
+              <div class="experience">{{ skill.experience }}</div>
+            </div>
+            <div class="proficiency-container">
+              <div class="proficiency-label">Proficiency</div>
+              <div class="progress-container">
+                <div class="progress-bar" [style.width.%]="skill.proficiency"></div>
+              </div>
+              <div class="level">{{ skill.level }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

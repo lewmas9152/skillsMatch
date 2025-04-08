@@ -1,0 +1,199 @@
+/* skills.component.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+:host {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 170px; /* Width of the sidebar */
+  margin-top: 60px; /* Height of the header */
+  overflow-y: auto;
+}
+
+.job-matcher-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f2f8;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.skill-gap-container {
+  display: flex;
+  background-color: #e6f0ff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  gap: 10rem;
+}
+
+.skill-gap-section {
+  flex: 1;
+}
+
+.recommended-skills {
+  flex: 1;
+} 
+
+h2 {
+  font-size: 18px;
+  color: #4285f4;
+  margin-bottom: 15px;
+}
+
+.skill-gap {
+  margin-bottom: 15px;
+}
+
+.skill-name {
+  margin-bottom: 5px;
+}
+
+.progress-container {
+  height: 10px;
+  background-color: #d1d1d1;
+  border-radius: 5px;
+  overflow: hidden;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4285f4;
+  border-radius: 5px;
+}
+
+.percentage {
+  min-width: 40px;
+  text-align: right;
+}
+
+.skills-pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-pill {
+  background-color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.add-skill-section {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.add-skill-title {
+  font-weight: bold;
+  margin-right: 20px;
+  min-width: 120px;
+}
+
+.add-skill-input {
+  flex: 1;
+}
+
+.add-skill-input input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.add-button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.skill-categories {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.category-tab {
+  padding: 12px 25px;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+.category-tab.active {
+  background-color: #e6f0ff;
+}
+
+.skills-list {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.skill-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.skill-item:last-child {
+  border-bottom: none;
+}
+
+.skill-detail .skill-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.experience {
+  font-size: 14px;
+  color: #666;
+}
+
+.proficiency-container {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.proficiency-label {
+  min-width: 80px;
+}
+
+.level {
+  min-width: 100px;
+  text-align: right;
+}
+
+.skill-gap .progress-container {
+  margin-top: 5px;
+  height: 8px;
+}
+
+.skill-gap {
+  display: flex;
+  align-items: center;
+}

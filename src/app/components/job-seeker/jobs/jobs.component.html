@@ -1,1 +1,95 @@
-<p>jobs works!</p>
+<!-- job-listing.component.html -->
+<div class="job-listing-container">
+  ">
+  <div class="main-content">
+      <app-navigation></app-navigation>
+      <!-- Job Header -->
+      <div class="job-header">
+        <div class="company-logo">{{ job.logo }}</div>
+        <div class="job-title-info">
+          <h2>{{ job.title }}</h2>
+          <p class="company-location">{{ job.company }}, {{ job.location }}</p>
+          <p class="job-meta">
+            Posted {{ job.postedDate }}. {{ job.matchPercentage }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="job-actions">
+        <button class="btn btn-save" (click)="saveJob()">Save Job</button>
+        <button class="btn btn-share" (click)="shareJob()">Share</button>
+        <button class="btn btn-apply" (click)="applyNow()">Apply Now</button>
+      </div>
+
+      <!-- Job Content Sections -->
+      <div class="job-content">
+        <!-- Job Details -->
+        <div class="card">
+          <h3>Job Details</h3>
+          <div class="details-grid">
+            <div
+              class="detail-row"
+              *ngFor="let detail of getObjectEntries(job.details)"
+            >
+              <div class="detail-label">{{ detail[0] | titlecase }}</div>
+              <div class="detail-value">{{ detail[1] }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Match -->
+        <div class="card">
+          <h3>Skills Match</h3>
+          <div class="skills-grid">
+            <div class="skill-row" *ngFor="let skill of job.skills">
+              <div class="skill-name">{{ skill.name }}</div>
+              <div class="skill-bar-container">
+                <div class="skill-bar" [style.width.%]="skill.rating"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Description Section -->
+        <div class="card full-width">
+          <h3>Job Description</h3>
+          <p>{{ job.description }}</p>
+
+          <h4>Responsibilities:</h4>
+          <ul>
+            <li *ngFor="let item of job.responsibilities">{{ item }}</li>
+          </ul>
+
+          <h4>Requirements:</h4>
+          <ul>
+            <li *ngFor="let item of job.requirements">{{ item }}</li>
+          </ul>
+
+          <h4>Benefits</h4>
+          <p>{{ job.benefits }}</p>
+        </div>
+
+        <!-- Similar Jobs Section -->
+        <div class="card full-width">
+          <h3>Similar jobs</h3>
+          <div class="similar-jobs-container">
+            <div
+              class="similar-job-card"
+              *ngFor="let similarJob of job.similarJobs"
+            >
+              <h4>{{ similarJob.title }}</h4>
+              <p class="company">{{ similarJob.company }}</p>
+              <p class="location">{{ similarJob.location }}</p>
+              <p class="salary">{{ similarJob.salary }}</p>
+              <p class="match">{{ similarJob.matchPercentage }}</p>
+              <button class="btn btn-view" (click)="viewSimilarJob(similarJob)">
+                View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</div>

@@ -33,6 +33,10 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .title-container h1 {

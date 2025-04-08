@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+:host {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+}
+.settings-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f2f8;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 170px; /* Width of the sidebar */
+  margin-top: 60px; /* Height of the header */
+  overflow-y: auto;
+}
+
+.header-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.subtitle {
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.tabs-container {
+  background-color: #f0f2f5;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+
+.tabs li {
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tabs li.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.settings-layout {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.personal-info {
+  flex: 1 1 350px;
+}
+
+.settings-sidebar {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  width: 70%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f5f7fa;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-danger {
+  background-color: white;
+  color: #ef4444;
+  text-align: left;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.password-section {
+  margin-top: 25px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 34px;
+  margin: 15px 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+  top: 0;
+  left: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.toggle-label {
+  margin-left: 70px;
+}
+
+/* Linked Accounts */
+.linked-account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.linked-account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.linked-account-item:last-child {
+  border-bottom: none;
+}
+
+.btn-link {
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.btn-connected {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-connect {
+  background-color: #f5f7fa;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* Language Dropdown */
+.language-dropdown {
+  position: relative;
+}
+
+.language-dropdown select {
+  appearance: none;
+  padding-right: 30px;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.two-factor p,
+.linked-accounts p,
+.account-settings p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .settings-layout {
+    flex-direction: column;
+  }
+}

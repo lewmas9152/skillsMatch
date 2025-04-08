@@ -1,1 +1,175 @@
-<p>settings works!</p>
+<div class="settings-container">
+  <app-navigation></app-navigation>
+
+  <div class="main-content">
+    <div class="header-card">
+      <h1>Settings</h1>
+      <p class="subtitle">
+        Manage your account preferences and persoal iformation
+      </p>
+    </div>
+
+    <div class="tabs-container">
+      <ul class="tabs">
+        <li
+          *ngFor="let tab of tabs"
+          [ngClass]="{ active: activeTab === tab }"
+          (click)="setActiveTab(tab)"
+        >
+          {{ tab }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="settings-layout">
+      <div class="card personal-info">
+        <h2>Personal Information</h2>
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input
+            type="text"
+            id="fullName"
+            [(ngModel)]="userInfo.fullName"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="userInfo.email"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            [(ngModel)]="userInfo.phoneNumber"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            [(ngModel)]="userInfo.location"
+            class="form-control"
+          />
+        </div>
+
+        <button class="btn btn-primary" (click)="saveChanges()">
+          Save changes
+        </button>
+
+        <h2 class="password-section">Password</h2>
+        <div class="form-group">
+          <label for="currentPassword">Current Password</label>
+          <input
+            type="password"
+            id="currentPassword"
+            [(ngModel)]="userInfo.currentPassword"
+            class="form-control"
+            disabled
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="newPassword">New Password</label>
+          <input
+            type="password"
+            id="newPassword"
+            [(ngModel)]="userInfo.newPassword"
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            [(ngModel)]="userInfo.confirmPassword"
+            class="form-control"
+          />
+        </div>
+
+        <button class="btn btn-primary" (click)="updatePassword()">
+          Update Password
+        </button>
+      </div>
+
+      <div class="settings-sidebar">
+        <div class="card two-factor">
+          <h2>Two-Factor Authentication</h2>
+          <p>Add an extra layer of security to your account</p>
+
+          <label class="toggle-switch">
+            <input
+              type="checkbox"
+              [(ngModel)]="twoFactorEnabled"
+              (change)="toggleTwoFactor()"
+            />
+            <span class="slider round"></span>
+            <span class="toggle-label">Enable Two Factor Authentication</span>
+          </label>
+        </div>
+
+        <div class="card linked-accounts">
+          <h2>Linked Accounts</h2>
+          <p>Connect your account with other services</p>
+
+          <div class="linked-account-list">
+            <div
+              class="linked-account-item"
+              *ngFor="let account of linkedAccounts"
+            >
+              <span class="account-name">{{ account.name }}</span>
+              <button
+                [ngClass]="{
+                  'btn-connected': account.connected,
+                  'btn-connect': !account.connected
+                }"
+                class="btn-link"
+              >
+                {{ account.status }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card account-settings">
+          <h2>Account Settings</h2>
+          <p>Connect your account with other services</p>
+
+          <div class="form-group">
+            <label for="language">Language</label>
+            <div class="language-dropdown">
+              <select
+                id="language"
+                [(ngModel)]="userInfo.language"
+                class="form-control"
+              >
+                <option>English (United States)</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>German</option>
+              </select>
+              <span class="dropdown-arrow">▼</span>
+            </div>
+          </div>
+
+          <button class="btn btn-danger" (click)="deactivateAccount()">
+            Deactivate Account
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

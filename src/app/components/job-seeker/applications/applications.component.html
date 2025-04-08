@@ -1,1 +1,56 @@
-<p>applications works!</p>
+<!-- applications.component.html -->
+<div class="applications-container">
+  <app-navigation></app-navigation>
+  <div class="main-content">
+    <!-- Header Section -->
+    <div class="page-header">
+      <div>
+        <h1>My Applications</h1>
+        <p class="subtitle">Track and manage your job applications</p>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+      <div class="tabs">
+        <button
+          *ngFor="let tab of tabs; let i = index"
+          class="tab-button"
+          [class.active]="tab.isActive"
+          (click)="setActiveTab(i)"
+        >
+          {{ tab.name }} ({{ tab.count }})
+        </button>
+      </div>
+      <button class="new-application-btn" (click)="addNewApplication()">
+        +New
+      </button>
+    </div>
+
+    <!-- Applications List -->
+    <div class="applications-list">
+      <div class="application-card" *ngFor="let app of applications">
+        <div class="application-main">
+          <div class="company-logo">{{ app.logo }}</div>
+          <div class="application-details">
+            <h3>{{ app.title }}</h3>
+            <p class="company-location">
+              {{ app.company }}{{ app.location ? ", " + app.location : "" }}
+            </p>
+            <p class="status" [style.color]="app.statusColor">
+              {{ app.status }}
+            </p>
+          </div>
+        </div>
+        <div class="application-meta">
+          <div class="applied-date">
+            <p>Applied on:</p>
+            <p class="date">{{ app.appliedDate }}</p>
+            <p class="time-ago">{{ app.timeAgo }}</p>
+          </div>
+          <button class="view-btn" (click)="viewApplication(app)">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

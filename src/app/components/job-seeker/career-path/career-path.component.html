@@ -1,1 +1,81 @@
-<p>career-path works!</p>
+<div class="career-path-container">
+  <app-navigation></app-navigation>
+  <div class="main-content">
+    <div class="careerHeader">
+      <h1>Career Path</h1>
+      <p class="subtitle">Plan your career growth and track your progress</p>
+    </div>
+
+    <div class="current-path-card">
+      <h2>Your current Path: {{ careerPath.currentPath }}</h2>
+      <p class="progress-text">
+        Progress:{{ careerPath.progress }}% to your next career milestone
+      </p>
+      <div class="progress-bar-container">
+        <div class="progress-bar" [style.width.%]="careerPath.progress"></div>
+      </div>
+    </div>
+
+    <div class="two-column-layout">
+      <div class="card">
+        <h2>Skills Growth</h2>
+        <div class="skills-list">
+          <div class="skill-item" *ngFor="let skill of skillsGrowth">
+            <div class="skill-name">{{ skill.name }}</div>
+            <div class="skill-progress-container">
+              <div
+                class="skill-progress-bar"
+                [style.width.%]="skill.progress"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Recommended Learning</h2>
+        <div class="course-list">
+          <div class="course-item" *ngFor="let course of recommendedCourses">
+            <div class="course-info">
+              <h3>{{ course.title }}</h3>
+              <p>{{ course.hours }} hours - {{ course.level }}</p>
+            </div>
+            <button class="start-button">Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card milestone-card">
+      <h2>Career Milestones</h2>
+      <div class="milestone-timeline">
+        <div class="timeline-bar"></div>
+        <div class="milestone-markers">
+          <div
+            class="milestone-marker"
+            *ngFor="let milestone of milestones"
+            [ngClass]="{
+              achieved: milestone.status === 'Achieved',
+              'in-progress': milestone.status === 'In Progress',
+              future: milestone.status === 'not-achieved'
+            }"
+          ></div>
+        </div>
+      </div>
+      <div class="milestone-details">
+        <div class="milestone" *ngFor="let milestone of milestones">
+          <div class="milestone-title">{{ milestone.title }}</div>
+          <div class="milestone-year">{{ milestone.year }}</div>
+          <div
+            class="milestone-status"
+            [ngClass]="{
+              'in-progress-text': milestone.status === 'In Progress'
+            }"
+          >
+            {{ milestone.status }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

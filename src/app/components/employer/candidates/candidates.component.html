@@ -1,1 +1,100 @@
-<p>candidates works!</p>
+<!-- candidates.component.html -->
+<div class="candidates-container">
+    <app-navigation></app-navigation>
+    <!-- Search Bar -->
+     <div class="main-content">
+        <div class="search-container">
+            <input 
+              type="text" 
+              class="search-input" 
+              placeholder="Search candidates with natural language (e.g. &quot;React developers with 3+ years experience&quot;)">
+            <button class="search-button">
+              <span class="search-icon">🔍</span>
+            </button>
+          </div>
+          
+          <!-- Advanced Filters -->
+          <div class="filters-container">
+            <h3 class="filters-title">Advanced Filters</h3>
+            
+            <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+              <div class="filters-grid">
+                <div class="filter-group">
+                  <label>Skills</label>
+                  <input type="text" formControlName="skills" placeholder="e.g. React, TypeScript">
+                </div>
+                
+                <div class="filter-group">
+                  <label>Experience</label>
+                  <input type="text" formControlName="experience" placeholder="e.g. 3+ years">
+                </div>
+                
+                <div class="filter-group">
+                  <label>Location</label>
+                  <input type="text" formControlName="location" placeholder="e.g. San Francisco">
+                </div>
+                
+                <div class="filter-group">
+                  <label>Education</label>
+                  <input type="text" formControlName="education" placeholder="e.g. Computer Science">
+                </div>
+                
+                <div class="filter-group">
+                  <label>Last Active</label>
+                  <input type="text" formControlName="lastActive" placeholder="e.g. Last 7 days">
+                </div>
+                
+                <div class="filter-actions">
+                  <button type="submit" class="apply-filters-btn">Apply Filters</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          
+          <!-- Results Header -->
+          <div class="results-header">
+            <div class="results-count">Showing {{ totalCandidates }} candidates</div>
+            
+            <div class="sort-container">
+              <label>Sort by:</label>
+              <select (change)="onSortChange($event)" class="sort-select">
+                <option value="Best Match">Best Match</option>
+                <option value="Most Recent">Most Recent</option>
+                <option value="Name A-Z">Name A-Z</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Candidates List -->
+          <div class="candidates-list">
+            <div *ngFor="let candidate of filteredCandidates" class="candidate-card">
+              <div class="candidate-avatar">
+                <!-- In a real app, this would be the candidate's profile image -->
+                <div class="avatar-placeholder"></div>
+              </div>
+              
+              <div class="candidate-info">
+                <h3 class="candidate-name">{{ candidate.name }}</h3>
+                <p class="candidate-title">{{ candidate.title }}</p>
+                <p class="candidate-location">{{ candidate.location }}. Last active: {{ candidate.lastActive }}</p>
+                
+                <div class="candidate-skills">
+                  <span *ngFor="let skill of candidate.skills" class="skill-badge">
+                    {{ skill }}
+                  </span>
+                </div>
+              </div>
+              
+              <div class="candidate-actions">
+                <div class="match-score">
+                  <div class="match-percentage">{{ candidate.matchPercentage }}%</div>
+                  <div class="match-label">Match</div>
+                </div>
+                
+                <button class="view-btn" (click)="viewCandidate(candidate.id)">View</button>
+              </div>
+            </div>
+          </div>
+     </div>
+ 
+  </div>

@@ -51,7 +51,11 @@ export class AnalyticsComponent implements OnInit {
   reactTrend = [65, 59, 80, 70, 85, 90];
   typescriptTrend = [70, 75, 65, 80, 85, 95];
   
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  private platformId: Object;
+
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    this.platformId = platformId;
+  }
   
   ngOnInit(): void {
     // Only initialize charts in browser environment

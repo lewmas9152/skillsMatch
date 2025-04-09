@@ -1,1 +1,97 @@
-<p>dashboard works!</p>
+<!-- dashboard.component.html -->
+<div class="dashboard-container">
+  <app-navigation></app-navigation>
+  
+  <div class="main-content">
+    <div class="welcome-card">
+      <h2>Welcome back {{userName}},</h2>
+    </div>
+    
+    <div class="dashboard-grid">
+      <!-- System Health Panel -->
+      <div class="panel">
+        <h2>System Health</h2>
+        
+        <div class="health-metrics">
+          <div class="metric">
+            <div class="metric-header">
+              <span>Server Status</span>
+              <span class="status-indicator" [ngClass]="{'online': systemHealth.serverStatus === 'online'}"></span>
+            </div>
+          </div>
+          
+          <div class="metric">
+            <div class="metric-header">
+              <span>API Response Time</span>
+              <span class="metric-value">{{systemHealth.apiResponseTime}}</span>
+            </div>
+          </div>
+          
+          <div class="metric">
+            <div class="metric-header">
+              <span>Error Rate</span>
+              <span class="metric-value">{{systemHealth.errorRate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- User Statistics Panel with Chart.js -->
+      <div class="panel">
+        <h2>User Statistics</h2>
+        <div class="chart-container">
+          <canvas #userStatsChart></canvas>
+        </div>
+      </div>
+      
+      <!-- Platform Activity Panel -->
+      <div class="panel wide">
+        <h2>Platform Activity</h2>
+        <div class="activity-metrics">
+          <div class="activity-card">
+            <div class="activity-value jobs">{{platformActivity.activeJobs}}</div>
+            <div class="activity-label">Active Jobs</div>
+          </div>
+          
+          <div class="activity-card">
+            <div class="activity-value applications">{{platformActivity.newApplications}}</div>
+            <div class="activity-label">New Applications</div>
+          </div>
+          
+          <div class="activity-card">
+            <div class="activity-value interviews">{{platformActivity.interviews}}</div>
+            <div class="activity-label">Interviews</div>
+          </div>
+          
+          <div class="activity-card">
+            <div class="activity-value hires">{{platformActivity.hires}}</div>
+            <div class="activity-label">Hires</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- AI Performance Panel -->
+      <div class="panel">
+        <h2>AI Performance</h2>
+        <div class="ai-metrics">
+          <div class="accuracy-gauge">
+            <div class="gauge-text">
+              <div class="percentage">{{aiPerformance.matchAccuracy}}%</div>
+              <div class="gauge-label">Match Accuracy</div>
+            </div>
+          </div>
+          
+          <div class="ai-metric">
+            <div class="metric-name">Skills Recognized</div>
+            <div class="metric-value">{{aiPerformance.skillsRecognized}}/{{aiPerformance.maxSkills}}</div>
+          </div>
+          
+          <div class="ai-metric">
+            <div class="metric-name">Feedback Rating</div>
+            <div class="metric-value">{{aiPerformance.feedbackRating}}/{{aiPerformance.maxRating}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

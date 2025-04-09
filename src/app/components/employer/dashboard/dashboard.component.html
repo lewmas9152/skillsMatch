@@ -1,1 +1,85 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <app-navigation></app-navigation>
+  <div class="main-content">
+    <div class="headerCard">
+      <h1>Welcome back {{ userName }}</h1>
+
+      <div class="stats-container">
+        <div class="stat-card" *ngFor="let stat of stats">
+          <h3>{{ stat.title }}</h3>
+          <p class="stat-value">{{ stat.value }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-layout">
+      <div class="card pipeline-card">
+        <h2>Candidate Pipeline</h2>
+        <div class="pipeline-chart">
+          <div *ngFor="let item of pipeline" class="pipeline-bar">
+            <div
+              class="bar"
+              [style.height.px]="(item.count / getMaxPipelineCount()) * 200"
+              [style.backgroundColor]="item.color"
+            ></div>
+            <div class="bar-label">{{ item.stage }}</div>
+            <div class="bar-value">{{ item.count }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card applications-card">
+        <h2>Recent Applications</h2>
+        <div class="applications-list">
+          <div
+            class="application-item"
+            *ngFor="let application of recentApplications"
+          >
+            <div class="avatar-placeholder"></div>
+            <div class="application-info">
+              <h3>{{ application.name }}</h3>
+              <p>{{ application.position }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-layout">
+      <div class="card interviews-card">
+        <h2>Upcoming Interviews</h2>
+        <div class="interviews-tabs">
+          <div *ngFor="let date of interviewDates" class="interview-tab">
+            {{ date.date }}
+          </div>
+        </div>
+        <div class="interview-list">
+          <div
+            class="interview-date-section"
+            *ngFor="let date of interviewDates"
+          >
+            <div
+              *ngFor="let interview of getInterviewsByDate(date.date)"
+              class="interview-item"
+            >
+              <div class="interview-time">{{ interview.time }}</div>
+              <div class="interview-details">
+                <div class="interview-name">{{ interview.name }}</div>
+                <div class="interview-position">{{ interview.position }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card actions-card">
+        <h2>Quick Actions</h2>
+        <div class="actions-list">
+          <button class="action-button post-job">Post New Job</button>
+          <button class="action-button search">Search Candidates</button>
+          <button class="action-button schedule">Schedule Interview</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

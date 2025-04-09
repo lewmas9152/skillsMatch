@@ -1,1 +1,90 @@
-<p>analytics works!</p>
+<!-- analytics.component.html -->
+<div class="analytics-container">
+    <app-navigation></app-navigation>
+    
+    <div class="main-content">
+      <h1 class="page-title">Analytics Dashboard</h1>
+      
+      <!-- Key metrics section -->
+      <div class="metrics-row">
+        <!-- Job Performance -->
+        <div class="metric-card">
+          <h2>Job Performance</h2>
+          <div class="metric-value">{{ jobPerformance }}%</div>
+          <div class="metric-change" [ngClass]="{'positive': jobPerformanceChange > 0, 'negative': jobPerformanceChange < 0}">
+            {{ jobPerformanceChange > 0 ? '+' : '' }}{{ jobPerformanceChange }}% from last month
+          </div>
+        </div>
+        
+        <!-- Time-to-Fill -->
+        <div class="metric-card">
+          <h2>Time-to-Fill</h2>
+          <div class="metric-value">{{ timeToFill }} days</div>
+          <div class="metric-change" [ngClass]="{'positive': timeToFillChange < 0, 'negative': timeToFillChange > 0}">
+            {{ timeToFillChange }} days from last quarter
+          </div>
+        </div>
+        
+        <!-- Cost-per-Hire -->
+        <div class="metric-card">
+          <h2>Cost-per-Hire</h2>
+          <div class="metric-value">${{ costPerHire | number }}</div>
+          <div class="metric-change" [ngClass]="{'positive': costPerHireChange < 0, 'negative': costPerHireChange > 0}">
+            ${{ costPerHireChange }} from last quarter
+          </div>
+        </div>
+      </div>
+      
+      <!-- Charts row -->
+      <div class="charts-row">
+        <!-- Hiring Funnel -->
+        <div class="chart-card funnel-chart-card">
+          <h2>Hiring Funnel</h2>
+          <div class="funnel-chart">
+            <div class="funnel-stage stage-1">
+              <div class="funnel-content">Applied ({{ funnelData.applied }})</div>
+            </div>
+            <div class="funnel-stage stage-2">
+              <div class="funnel-content">Screened ({{ funnelData.screened }})</div>
+            </div>
+            <div class="funnel-stage stage-3">
+              <div class="funnel-content">Interviewed ({{ funnelData.interviewed }})</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Applicant Sources -->
+        <div class="chart-card">
+          <h2>Applicant Sources</h2>
+          <div class="chart-container">
+            <canvas id="applicantSourcesChart"></canvas>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom charts row -->
+      <div class="charts-row">
+        <!-- Skills Gap Analysis -->
+        <div class="chart-card">
+          <h2>Skills Gap Analysis</h2>
+          <div class="skills-chart">
+            <div class="skill-item" *ngFor="let skill of skillsData">
+              <div class="skill-name">{{ skill.name }}</div>
+              <div class="skill-bar-container">
+                <div class="skill-bar" [style.width.%]="skill.value"></div>
+                <div class="skill-bar-bg"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Market Trends -->
+        <div class="chart-card">
+          <h2>Market Trends for Skills</h2>
+          <div class="chart-container">
+            <canvas id="marketTrendsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,1 +1,114 @@
-<p>interviews works!</p>
+<!-- interviews.component.html -->
+<div class="interviews-container">
+  <app-navigation></app-navigation>
+  <div class="main-content">
+    <!-- View Controls -->
+    <div class="view-controls">
+      <div class="view-tabs">
+        <button
+          [class.active]="viewMode === 'calendar'"
+          (click)="toggleView('calendar')"
+          class="view-tab"
+        >
+          Calendar View
+        </button>
+        <button
+          [class.active]="viewMode === 'list'"
+          (click)="toggleView('list')"
+          class="view-tab"
+        >
+          List View
+        </button>
+      </div>
+
+      <div class="action-buttons">
+        <button class="filter-btn" (click)="openFilterDialog()">Filter</button>
+        <button class="schedule-btn" (click)="openScheduleInterviewDialog()">
+          + Schedule Interview
+        </button>
+      </div>
+    </div>
+
+    <!-- Calendar View -->
+    <div *ngIf="viewMode === 'calendar'" class="calendar-view">
+      <!-- Days Header -->
+      <div class="calendar-header">
+        <div class="time-column"></div>
+        <div *ngFor="let day of weekDays" class="day-column">
+          {{ day }}
+        </div>
+      </div>
+
+      <!-- Time Slots -->
+      <div class="calendar-grid">
+        <!-- Time Markers -->
+        <div
+          *ngFor="let hour of [9, 10, 11, 12, 1, 2, 3, 4]"
+          class="time-marker"
+        >
+          <div class="time-label">
+            {{ hour }}:00 {{ hour < 9 || hour === 12 ? "PM" : "AM" }}
+          </div>
+          <div class="time-line"></div>
+        </div>
+
+        <!-- Interview Cards -->
+        <ng-container *ngFor="let interview of interviews">
+          <div
+            class="interview-card"
+            [style.top.px]="
+              (interview.timeSlot.start.getHours() - startHour) * 60 +
+              interview.timeSlot.start.getMinutes()
+            "
+            [style.left.%]="
+              (interview.timeSlot.start.getDay() === 0
+                ? 6
+                : interview.timeSlot.start.getDay() - 1) *
+                20 +
+              5
+            "
+            [style.height.px]="
+              (interview.timeSlot.end.getTime() -
+                interview.timeSlot.start.getTime()) /
+              (1000 * 60)
+            "
+            [style.background-color]="interview.color"
+          >
+            <div class="interview-title">{{ interview.candidateName }}</div>
+            <div class="interview-time">{{ formatTimeRange(interview) }}</div>
+            <div class="interview-type">{{ interview.interviewType }}</div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- List View -->
+    <div *ngIf="viewMode === 'list'" class="list-view">
+      <div class="interview-list">
+        <div
+          *ngFor="let interview of interviews"
+          class="list-interview-card"
+          [style.border-left-color]="interview.color"
+        >
+          <div class="list-interview-info">
+            <h3>{{ interview.candidateName }}</h3>
+            <p class="interview-date">
+              {{ interview.timeSlot.start | date : "EEEE, MMM d" }} ·
+              {{ formatTimeRange(interview) }}
+            </p>
+            <p class="interview-type">{{ interview.interviewType }}</p>
+          </div>
+
+          <div class="list-interview-actions">
+            <button class="action-btn">View</button>
+            <button class="action-btn">Reschedule</button>
+          </div>
+        </div>
+
+        <div *ngIf="interviews.length === 0" class="no-interviews">
+          No interviews scheduled. Click "Schedule Interview" to add one.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

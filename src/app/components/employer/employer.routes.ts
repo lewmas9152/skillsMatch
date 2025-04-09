@@ -5,6 +5,7 @@ import { CandidatesComponent } from './candidates/candidates.component';
 import { InterviewsComponent } from './interviews/interviews.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { EmployerComponent } from './employer.component'
+import { SettingsComponent } from './settings/settings.component';
 
 export const EMPLOYER_ROUTES: Routes = [
   {
@@ -17,6 +18,7 @@ export const EMPLOYER_ROUTES: Routes = [
       { path: 'candidates', component: CandidatesComponent },
       { path: 'interviews', component: InterviewsComponent },
       { path: 'analytics', component: AnalyticsComponent },
+      {path: 'settings', component:SettingsComponent },
     ]
   }
 ];

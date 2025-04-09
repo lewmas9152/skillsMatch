@@ -1,0 +1,244 @@
+<!-- settings.component.html -->
+<div class="settings-container">
+    <app-navigation></app-navigation>
+    
+    <div class="main-content">
+      <h1 class="page-title">Settings</h1>
+      
+      <div class="settings-content">
+        <!-- Settings Navigation Tabs -->
+        <div class="settings-tabs">
+          <button 
+            [ngClass]="{'active': activeTab === 'profile'}" 
+            (click)="setActiveTab('profile')">
+            Profile
+          </button>
+          <button 
+            [ngClass]="{'active': activeTab === 'notifications'}" 
+            (click)="setActiveTab('notifications')">
+            Notifications
+          </button>
+          <button 
+            [ngClass]="{'active': activeTab === 'integrations'}" 
+            (click)="setActiveTab('integrations')">
+            Integrations
+          </button>
+          <button 
+            [ngClass]="{'active': activeTab === 'account'}" 
+            (click)="setActiveTab('account')">
+            Account Security
+          </button>
+        </div>
+        
+        <!-- Settings Content -->
+        <div class="settings-panel">
+          <!-- Profile Settings -->
+          <div *ngIf="activeTab === 'profile'" class="panel-content">
+            <h2>Profile Information</h2>
+            <div class="profile-section">
+              <div class="profile-image-section">
+                <div class="profile-image">
+                  <img [src]="profileImageSrc" alt="Profile Image">
+                  <div class="image-upload-overlay">
+                    <label for="profile-image-upload">
+                      <i class="icon">edit</i>
+                    </label>
+                    <input type="file" id="profile-image-upload" (change)="onProfileImageChange($event)" accept="image/*">
+                  </div>
+                </div>
+                <p class="image-help-text">Click to upload a new profile image</p>
+              </div>
+              
+              <div class="profile-form">
+                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="firstName">First Name</label>
+                      <input type="text" id="firstName" formControlName="firstName">
+                      <div *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched" class="error-message">
+                        First name is required
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input type="text" id="lastName" formControlName="lastName">
+                      <div *ngIf="profileForm.get('lastName')?.invalid && profileForm.get('lastName')?.touched" class="error-message">
+                        Last name is required
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" formControlName="email">
+                    <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" class="error-message">
+                      Please enter a valid email address
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" formControlName="phoneNumber">
+                    <div *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched" class="error-message">
+                      Please enter a valid phone number
+                    </div>
+                  </div>
+                  
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="jobTitle">Job Title</label>
+                      <input type="text" id="jobTitle" formControlName="jobTitle">
+                    </div>
+                    <div class="form-group">
+                      <label for="department">Department</label>
+                      <input type="text" id="department" formControlName="department">
+                    </div>
+                  </div>
+                  
+                  <button type="submit" class="btn-primary">Save Changes</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Notification Settings -->
+          <div *ngIf="activeTab === 'notifications'" class="panel-content">
+            <h2>Notification Preferences</h2>
+            <form [formGroup]="notificationForm" (ngSubmit)="updateNotifications()">
+              <div class="section">
+                <h3>Email Notifications</h3>
+                <p class="section-description">Select which email notifications you'd like to receive</p>
+                
+                <div class="checkbox-group">
+                  <div *ngFor="let notification of emailNotifications" class="checkbox-item">
+                    <input 
+                      type="checkbox" 
+                      [id]="notification.id" 
+                      [(ngModel)]="notification.checked" 
+                      [ngModelOptions]="{standalone: true}">
+                    <label [for]="notification.id">{{ notification.label }}</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="section">
+                <h3>Email Digest Frequency</h3>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input type="radio" id="digest-daily" formControlName="emailDigest" value="daily">
+                    <label for="digest-daily">Daily digest</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" id="digest-weekly" formControlName="emailDigest" value="weekly">
+                    <label for="digest-weekly">Weekly digest</label>
+                  </div>
+                  <div class="radio-item">
+                    <input type="radio" id="digest-never" formControlName="emailDigest" value="never">
+                    <label for="digest-never">Don't send digests</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="section">
+                <h3>Push Notifications</h3>
+                <div class="toggle-switch">
+                  <input 
+                    type="checkbox" 
+                    id="push-notifications" 
+                    formControlName="pushNotifications" 
+                    class="toggle-input">
+                  <label for="push-notifications" class="toggle-label"></label>
+                  <span>Enable push notifications in browser</span>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn-primary">Save Preferences</button>
+            </form>
+          </div>
+          
+          <!-- Integrations Settings -->
+          <div *ngIf="activeTab === 'integrations'" class="panel-content">
+            <h2>Manage Integrations</h2>
+            <p class="section-description">Connect JobMatcher with other services to streamline your hiring process</p>
+            
+            <div class="integrations-list">
+              <div *ngFor="let integration of integrations" class="integration-item">
+                <div class="integration-info">
+                  <div class="integration-icon">
+                    <i class="icon">{{ integration.icon }}</i>
+                  </div>
+                  <div class="integration-details">
+                    <h4>{{ integration.name }}</h4>
+                    <p>{{ integration.connected ? 'Connected' : 'Not connected' }}</p>
+                  </div>
+                </div>
+                <button 
+                  class="btn-outline" 
+                  [ngClass]="{'disconnect': integration.connected}" 
+                  (click)="toggleIntegration(integration)">
+                  {{ integration.connected ? 'Disconnect' : 'Connect' }}
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Account Security Settings -->
+          <div *ngIf="activeTab === 'account'" class="panel-content">
+            <h2>Account Security</h2>
+            
+            <div class="section">
+              <h3>Change Password</h3>
+              <form [formGroup]="accountForm" (ngSubmit)="changePassword()">
+                <div class="form-group">
+                  <label for="current-password">Current Password</label>
+                  <input type="password" id="current-password" formControlName="currentPassword">
+                  <div *ngIf="accountForm.get('currentPassword')?.invalid && accountForm.get('currentPassword')?.touched" class="error-message">
+                    Current password is required
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="new-password">New Password</label>
+                  <input type="password" id="new-password" formControlName="newPassword">
+                  <div *ngIf="accountForm.get('newPassword')?.invalid && accountForm.get('newPassword')?.touched" class="error-message">
+                    Password must be at least 8 characters and include uppercase, lowercase, number, and special character
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="confirm-password">Confirm New Password</label>
+                  <input type="password" id="confirm-password" formControlName="confirmPassword">
+                  <div *ngIf="accountForm.get('confirmPassword')?.value !== accountForm.get('newPassword')?.value && accountForm.get('confirmPassword')?.touched" class="error-message">
+                    Passwords don't match
+                  </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Update Password</button>
+              </form>
+            </div>
+            
+            <div class="section danger-zone">
+              <h3>Danger Zone</h3>
+              <div class="danger-actions">
+                <div class="danger-action">
+                  <div>
+                    <h4>Reset Account Data</h4>
+                    <p>This will clear all your jobs, candidates, and other data. This cannot be undone.</p>
+                  </div>
+                  <button class="btn-danger">Reset Data</button>
+                </div>
+                
+                <div class="danger-action">
+                  <div>
+                    <h4>Delete Account</h4>
+                    <p>This will permanently delete your account and all associated data.</p>
+                  </div>
+                  <button class="btn-danger">Delete Account</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

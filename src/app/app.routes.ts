@@ -2,7 +2,11 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'admin', pathMatch: 'full' },
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  {
+    path: 'landing',
+    loadChildren: () => import('./components/landing-pages/landing-pages.routes').then(r => r.LANDING_PAGES_ROUTES)
+  },
   {
     path: 'job-seeker',
     loadChildren: () => import('./components/job-seeker/job-seeker.routes').then(r => r.JOB_SEEKER_ROUTES)
@@ -15,5 +19,5 @@ export const routes: Routes = [
     path: 'employer',
     loadChildren: () => import('./components/employer/employer.routes').then(r => r.EMPLOYER_ROUTES)
   },
-  { path: '**', redirectTo: 'admin' }
+  { path: '**', redirectTo: 'landing' }
 ];

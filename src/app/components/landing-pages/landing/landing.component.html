@@ -1,0 +1,154 @@
+<!-- landing.component.html -->
+<div class="landing-container">
+    <!-- Header/Navigation -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-text">JobMatcher</span>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">For Employers</a></li>
+          <li><a href="#">For Job Seekers</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <button class="login-btn">Login</button>
+        <button class="signup-btn">Sign Up</button>
+      </div>
+    </header>
+  
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Find Your Perfect Job Match <br><span class="highlighted-text">Powered by AI</span></h1>
+        <p class="hero-description">Our AI-driven platform analyzes your skills and experiences to connect you with ideal opportunities.</p>
+        <div class="cta-buttons">
+          <button class="primary-btn">Get Started</button>
+          <button class="secondary-btn">How It Works</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/images/job-match-illustration.jpg" alt="Job matching illustration">
+      </div>
+    </section>
+  
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="stat-container" *ngFor="let stat of stats">
+        <div class="stat-value">{{stat.value}}</div>
+        <div class="stat-description">{{stat.description}}</div>
+      </div>
+    </section>
+  
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps-container">
+        <div class="step" *ngFor="let step of steps">
+          <div class="step-number">{{step.step}}</div>
+          <div class="step-content">
+            <h3>{{step.title}}</h3>
+            <p>{{step.description}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Features Section -->
+    <section class="features">
+      <h2>Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card" *ngFor="let feature of features">
+          <div class="feature-icon" [ngClass]="feature.icon"></div>
+          <h3>{{feature.title}}</h3>
+          <p>{{feature.description}}</p>
+          <a href="#" class="learn-more">Learn More</a>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h2>What Our Users Say</h2>
+      <div class="testimonials-container">
+        <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+          <div class="user-info">
+            <div class="avatar">
+              <!-- You would replace with actual images -->
+              <div class="avatar-placeholder">{{testimonial.name.charAt(0)}}</div>
+            </div>
+            <div class="user-details">
+              <h4>{{testimonial.name}}</h4>
+              <p>{{testimonial.position}}</p>
+            </div>
+          </div>
+          <p class="testimonial-text">{{testimonial.text}}</p>
+          <div class="rating">
+            <span class="stars" [innerHTML]="'★'.repeat(testimonial.stars)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <h2>Ready to Find Your Perfect Match?</h2>
+      <p>Join thousands of professionals who have found their dream jobs with JobMatcher's platform.</p>
+      <div class="cta-buttons">
+        <button class="primary-btn">For Job Seekers</button>
+        <button class="secondary-btn">For Employers</button>
+      </div>
+    </section>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>JobMatcher</h3>
+          <p>AI-powered job matching platform connecting talent with opportunities.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Career Advice</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" class="social-icon"></a>
+            <a href="#" class="social-icon"></a>
+            <a href="#" class="social-icon"></a>
+            <a href="#" class="social-icon"></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 JobMatcher. All rights reserved.
+      </div>
+    </footer>
+  </div>

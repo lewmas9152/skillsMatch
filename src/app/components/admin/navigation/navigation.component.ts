@@ -13,8 +13,8 @@ export class NavigationComponent {
   userInitials = 'SM'; // User initials for the avatar
   menuItems = [
     { icon: '📊', label: 'Dashboard',route:'/admin/dashboard', active: true },
-    { icon: '👥', label: 'User Management',route:'/admin/UserManagement', active: false },
+    { icon: '👥', label: 'User Management',route:'/admin/userManagement', active: true },
     { icon: '⚙️', label: 'System Config',route:'/admin/systemConfig', active: false },
-    { icon: 'AI', label: 'AI Training',route:'/admin/aiTraining', active: false }
+    { icon: '🤖', label: 'AI Training',route:'/admin/aiTraining', active: false }
   ];
 }

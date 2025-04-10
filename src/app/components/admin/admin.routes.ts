@@ -15,7 +15,7 @@ export const ADMIN_ROUTES: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'userManagement', component: UserManagementComponent },
-      { path: 'systemConfiguration', component: SystemConfigurationComponent },
+      { path: 'systemConfig', component: SystemConfigurationComponent },
       { path: 'aiTraining', component: AiTrainingComponent }
     ]
   }

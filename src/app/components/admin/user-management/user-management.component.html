@@ -1,1 +1,70 @@
-<p>user-management works!</p>
+<!-- user-management.component.html -->
+<div class="user-management-container">
+  <app-navigation></app-navigation>
+  <div class="main-content">
+    <div class="filter-section">
+      <div class="search-box">
+        <input type="text" placeholder="Search users" (input)="searchUsers($event)">
+      </div>
+      <div class="filter-options">
+        <button class="filter-btn">All Users</button>
+        <button class="filter-btn">All Users</button>
+        <button class="filter-btn">All Users</button>
+        <button class="main-filter-btn">Filter</button>
+      </div>
+    </div>
+  
+    <div class="users-table">
+      <div class="table-header">
+        <div class="header-cell id-col">ID</div>
+        <div class="header-cell name-col">Name</div>
+        <div class="header-cell email-col">Email</div>
+        <div class="header-cell role-col">Role</div>
+        <div class="header-cell status-col">Status</div>
+        <div class="header-cell actions-col">Actions</div>
+      </div>
+  
+      <div class="table-body">
+        <div class="table-row" *ngFor="let user of filteredUsers">
+          <div class="cell id-col">{{ user.id }}</div>
+          <div class="cell name-col">
+            <div class="user-avatar" [style.background-color]="user.avatarColor">
+              {{ user.initials }}
+            </div>
+            {{ user.name }}
+          </div>
+          <div class="cell email-col">{{ user.email }}</div>
+          <div class="cell role-col">{{ user.role }}</div>
+          <div class="cell status-col">
+            <span class="status-badge" [ngClass]="{'active': user.status === 'Active', 'locked': user.status === 'Locked'}">
+              {{ user.status }}
+            </span>
+          </div>
+          <div class="cell actions-col">
+            <button class="action-btn view-btn" (click)="viewUser(user.id)">
+              <i class="icon">👁️</i>
+            </button>
+            <button class="action-btn edit-btn" (click)="editUser(user.id)">
+              <i class="icon">✏️</i>
+            </button>
+            <button class="action-btn more-btn" (click)="moreOptions(user.id)">
+              <i class="icon">⋮</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="pagination">
+      <div class="pagination-info">Showing {{ filteredUsers.length }} of {{ totalUsers }} users</div>
+      <div class="pagination-controls">
+        <button class="page-btn" [ngClass]="{'active': currentPage === 1}" (click)="changePage(1)">1</button>
+        <button class="page-btn" [ngClass]="{'active': currentPage === 2}" (click)="changePage(2)">2</button>
+        <button class="page-btn" [ngClass]="{'active': currentPage === 3}" (click)="changePage(3)">3</button>
+        <button class="page-btn next-btn" (click)="nextPage()">→</button>
+      </div>
+      <button class="new-user-btn" (click)="addNewUser()">+ New User</button>
+    </div>
+  </div>
+
+</div>

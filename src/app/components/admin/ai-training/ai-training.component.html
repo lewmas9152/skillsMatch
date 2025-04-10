@@ -1,1 +1,126 @@
-<p>ai-training works!</p>
+<!-- ai-training.component.html -->
+<div class="content-container">
+    <app-navigation></app-navigation>
+    <div class="main-content">
+        <div class="header-card">
+            <h1 class="page-title">AI Training and Monitoring</h1>
+        </div>
+        
+  
+        <div class="dashboard-grid">
+          <!-- Performance Chart -->
+          <div class="card performance-card">
+            <h2>Matching Algorithm Performance</h2>
+            <div class="chart-container">
+              <canvas id="performanceChart"></canvas>
+            </div>
+          </div>
+      
+          <!-- Feedback Collection -->
+          <div class="card feedback-card">
+            <h2>Feedback Collection</h2>
+            <div class="feedback-content">
+              <div class="chart-container">
+                <canvas id="feedbackChart"></canvas>
+                <div class="feedback-percentage">
+                  <span>{{feedbackData.positiveRate}}%</span>
+                  <div class="label">Positive Feedback</div>
+                </div>
+              </div>
+              <div class="feedback-legend">
+                <div *ngFor="let category of feedbackData.categories" class="legend-item">
+                  <div class="color-box" [style.background-color]="category.color"></div>
+                  <div class="legend-text">{{category.name}} ({{category.percentage}}%)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Skills Taxonomy -->
+          <div class="card skills-card">
+            <h2>Skills Taxonomy Management</h2>
+            <div class="skills-search">
+              <div class="search-input">
+                <input type="text" placeholder="Search skills...">
+                <i class="search-icon">🔍</i>
+              </div>
+              <div class="filter-dropdown">
+                <select>
+                  <option>All Categories</option>
+                </select>
+              </div>
+            </div>
+            <div class="skills-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Skill Name</th>
+                    <th>Category</th>
+                    <th>Recognition Rate</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let skill of skills">
+                    <td>
+                      <span [class.review-needed]="skill.needsReview">{{skill.name}}</span>
+                      <span *ngIf="skill.needsReview" class="review-tag">Review</span>
+                    </td>
+                    <td>{{skill.category}}</td>
+                    <td>
+                      <div class="progress-bar">
+                        <div class="progress" 
+                             [style.width.%]="skill.recognitionRate"
+                             [ngClass]="{
+                               'high': skill.recognitionRate >= 90,
+                               'medium': skill.recognitionRate >= 80 && skill.recognitionRate < 90,
+                               'low': skill.recognitionRate < 80
+                             }"></div>
+                      </div>
+                      <span class="percentage">{{skill.recognitionRate}}%</span>
+                    </td>
+                    <td>
+                      <button class="edit-btn">Edit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="add-skill">
+              <button class="add-btn">+ Add New Skill</button>
+            </div>
+          </div>
+      
+          <!-- Test Cases -->
+          <div class="card test-cases-card">
+            <h2>Test Cases</h2>
+            <div class="test-info">
+              <div class="test-status">Running Test Suite</div>
+              <div class="progress-bar">
+                <div class="progress" [style.width.%]="testCases.progress"></div>
+              </div>
+              <div class="progress-text">{{testCases.progress}}%</div>
+            </div>
+            <div class="test-results">
+              <div class="result-item passing">Passing: {{testCases.passing}} tests</div>
+              <div class="result-item failing">Failing: {{testCases.failing}} tests</div>
+              <div class="result-item pending">Pending: {{testCases.pending}} tests</div>
+            </div>
+            <div class="run-tests">
+              <button class="run-btn">Run All Tests</button>
+            </div>
+          </div>
+      
+          <!-- Model Adjustment -->
+          <div class="card model-card">
+            <h2>Model Adjustment</h2>
+            <button class="retrain-btn">Retrain Model</button>
+            <div class="model-info">
+              <div class="info-item">Last trained: {{modelInfo.lastTrained}}</div>
+              <div class="info-item">Training data: {{modelInfo.trainingSamples}} samples</div>
+            </div>
+          </div>
+        </div>
+    </div>
+   
+  </div>

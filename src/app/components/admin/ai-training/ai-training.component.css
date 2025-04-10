@@ -1,0 +1,320 @@
+/* ai-training.component.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+:host {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+}
+.content-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #f0f2f8;
+}
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 170px; /* Width of the sidebar */
+  margin-top: 60px; /* Height of the header */
+  overflow-y: auto;
+}
+
+.page-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.header-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Performance Chart Card */
+.performance-card {
+  grid-column: 1 / 2;
+}
+
+/* Feedback Collection Card */
+.feedback-card {
+  grid-column: 2 / 3;
+}
+
+.feedback-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-container {
+  position: relative;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.feedback-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.feedback-percentage span {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.feedback-percentage .label {
+  font-size: 12px;
+  color: #666;
+}
+
+.feedback-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+
+.color-box {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+/* Skills Taxonomy Card */
+.skills-card {
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+}
+
+.skills-search {
+  display: flex;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  position: relative;
+}
+
+.search-input input {
+  width: 90%;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.filter-dropdown select {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.skills-table {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+  color: #666;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.high {
+  background-color: #4caf50;
+}
+
+.medium {
+  background-color: #2196f3;
+}
+
+.low {
+  background-color: #ffc107;
+}
+
+.percentage {
+  font-size: 12px;
+  color: #666;
+}
+
+.edit-btn {
+  padding: 5px 10px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-skill {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.add-btn {
+  padding: 8px 16px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.review-needed {
+  color: #f44336;
+}
+
+.review-tag {
+  background-color: #ffebee;
+  color: #f44336;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-left: 8px;
+}
+
+/* Test Cases Card */
+.test-cases-card {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.test-info {
+  margin-bottom: 15px;
+}
+
+.test-status {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.test-results {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.result-item {
+  margin-bottom: 5px;
+}
+
+.passing {
+  color: #4caf50;
+}
+
+.failing {
+  color: #f44336;
+}
+
+.pending {
+  color: #ff9800;
+}
+
+.run-tests {
+  text-align: right;
+}
+
+.run-btn {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Model Adjustment Card */
+.model-card {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.retrain-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: #f5a623;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.model-info {
+  color: #666;
+}
+
+.info-item {
+  margin-bottom: 8px;
+}

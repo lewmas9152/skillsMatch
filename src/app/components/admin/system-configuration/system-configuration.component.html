@@ -1,1 +1,98 @@
-<p>system-configuration works!</p>
+<!-- system-configuration.component.html -->
+ <div class="systemConfig-container">
+    <app-navigation></app-navigation>
+    <div class="main-content">
+        <div class="header-card">
+            <h1 class="page-title">System Configuration</h1>
+        </div>
+        
+        
+        <div class="config-container">
+          <div class="tabs">
+            <div class="tab active">AI Parameters</div>
+            <div class="tab">Email Settings</div>
+            <div class="tab">Security</div>
+            <div class="tab">API Integration</div>
+            <div class="tab">Feature Toggles</div>
+          </div>
+          
+          <div class="tab-content">
+            <h2>Matching Algorithm Settings</h2>
+            
+            <div class="setting-group">
+              <div class="setting-item">
+                <div class="setting-label">Skill Matching Weight</div>
+                <div class="slider-container">
+                  <input type="range" min="0" max="100" [(ngModel)]="skillMatchingWeight" class="slider">
+                  <div class="slider-value">{{ skillMatchingWeight }}%</div>
+                </div>
+              </div>
+              
+              <div class="setting-item">
+                <div class="setting-label">Experience Weight</div>
+                <div class="slider-container">
+                  <input type="range" min="0" max="100" [(ngModel)]="experienceWeight" class="slider">
+                  <div class="slider-value">{{ experienceWeight }}%</div>
+                </div>
+              </div>
+              
+              <div class="setting-item">
+                <div class="setting-label">Education Weight</div>
+                <div class="slider-container">
+                  <input type="range" min="0" max="100" [(ngModel)]="educationWeight" class="slider">
+                  <div class="slider-value">{{ educationWeight }}%</div>
+                </div>
+              </div>
+              
+              <div class="setting-item">
+                <div class="setting-label">Location Weight</div>
+                <div class="slider-container">
+                  <input type="range" min="0" max="100" [(ngModel)]="locationWeight" class="slider">
+                  <div class="slider-value">{{ locationWeight }}%</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="setting-group">
+              <h3>Minimum Match Threshold</h3>
+              <p class="setting-description">Set the minimum percentage required to show a job match to candidates</p>
+              <div class="slider-container threshold-slider">
+                <div class="range-label">0%</div>
+                <input type="range" min="0" max="100" [(ngModel)]="minimumMatchThreshold" class="slider threshold">
+                <div class="range-label">100%</div>
+              </div>
+              <div class="threshold-value">{{ minimumMatchThreshold }}%</div>
+            </div>
+            
+            <div class="setting-group">
+              <h3>Accuracy vs. Coverage</h3>
+              <p class="setting-description">Balance between showing more matches (coverage) or better matches (accuracy)</p>
+              <div class="option-buttons">
+                <button 
+                  [class.selected]="selectedAccuracyOption === 'coverage'"
+                  (click)="setAccuracyOption('coverage')"
+                  class="option-button">
+                  Coverage
+                </button>
+                <button 
+                  [class.selected]="selectedAccuracyOption === 'balanced'"
+                  (click)="setAccuracyOption('balanced')"
+                  class="option-button">
+                  Balanced
+                </button>
+                <button 
+                  [class.selected]="selectedAccuracyOption === 'accuracy'"
+                  (click)="setAccuracyOption('accuracy')"
+                  class="option-button">
+                  Accuracy
+                </button>
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <button class="save-button" (click)="saveChanges()">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ </div>

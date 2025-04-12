@@ -1,24 +1,14 @@
-
-/* Reset and Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-font-family: "Roboto", sans-serif;
-}
-
-body {
-  background-color: #f8f9fa;
-  color: #212529;
-  line-height: 1.6;
-  
+a {
+  text-decoration: none;
 }
 
 /* Container */
 .landing-container {
   width: 100vw;
-  height: 100vh;
-  overflow-y:hidden;
+  height: fit-content;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+  /* display: none; */
 }
 
 /* Header Styles */

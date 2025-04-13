@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,11 +13,15 @@ import { RouterModule } from '@angular/router';
 })
 export class SignupComponent {
   signupForm: FormGroup;
-  userTypes = ['Job Seeker', 'Employer', 'Recruiter'];
+  userTypes = ['Job Seeker', 'Employer', 'Admin'];
   selectedUserType: string = 'Job Seeker';
   passwordStrength: string = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
     this.signupForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -33,7 +38,6 @@ export class SignupComponent {
 
   selectUserType(type: string): void {
     this.selectedUserType = type;
-    console.log()
   }
 
   evaluatePasswordStrength(password: string): void {
@@ -61,8 +65,20 @@ export class SignupComponent {
 
   onSubmit(): void {
     if (this.signupForm.valid) {
-      console.log('Form submitted:', this.signupForm.value);
-      // Here you would typically call your authentication service
+      // Get form values and add the selected user type
+      const userData = {
+        ...this.signupForm.value,
+        userType: this.selectedUserType
+      };
+      
+      console.log('Form submitted:', userData);
+      
+      // Save user data including the user type
+      this.userService.registerUser(userData);
+      
+      // Navigate to login page after successful registration
+      alert('Account created successfully! Please login.');
+      this.router.navigate(['/home/login']);
     } else {
       // Mark all fields as touched to trigger validation display
       Object.keys(this.signupForm.controls).forEach(key => {

@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-navigation',
   imports: [CommonModule, RouterModule],
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css', '../admin.component.css'],
+  styleUrls: ['./navigation.component.css', '../../../../styles.css'],
 })
 export class NavigationComponent {
   userInitials = 'SM'; // User initials for the avatar

@@ -7,7 +7,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
   standalone: true,
   imports: [CommonModule, NavigationComponent],
   templateUrl: './career-path.component.html',
-  styleUrls: ['./career-path.component.css']
+  styleUrls: ['./career-path.component.css','../../../../styles.css']
 })
 export class CareerPathComponent {
   careerPath = {

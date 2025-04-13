@@ -19,7 +19,7 @@ interface Interview {
   selector: 'app-interviews',
   imports: [CommonModule, NavigationComponent],
   templateUrl: './interviews.component.html',
-  styleUrls: ['./interviews.component.css', '../employer.component.css'],
+  styleUrls: ['./interviews.component.css', '../../../../styles.css'],
 })
 export class InterviewsComponent implements OnInit {
   viewMode: 'calendar' | 'list' = 'calendar';

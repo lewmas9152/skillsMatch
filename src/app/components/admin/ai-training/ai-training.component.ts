@@ -11,7 +11,7 @@ Chart.register(...registerables);
   selector: 'app-ai-training',
   imports: [CommonModule, NavigationComponent],
   templateUrl: './ai-training.component.html',
-  styleUrls: ['./ai-training.component.css','../admin.component.css'],
+  styleUrls: ['./ai-training.component.css','../../../../styles.css'],
 })
 export class AiTrainingComponent implements OnInit, AfterViewInit {
   userInitials = 'SM';

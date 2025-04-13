@@ -8,7 +8,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
 @Component({
   selector: 'app-system-configuration',
   templateUrl: './system-configuration.component.html',
-  styleUrls: ['./system-configuration.component.css', '../admin.component.css'],
+  styleUrls: ['./system-configuration.component.css', '../../../../styles.css'],
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule, NavigationComponent]
 })

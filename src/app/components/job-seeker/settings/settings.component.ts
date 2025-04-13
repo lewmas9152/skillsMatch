@@ -8,7 +8,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
   standalone: true,
   imports: [CommonModule, FormsModule, NavigationComponent],
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css','../../../../styles.css']
 })
 export class SettingsComponent {
   activeTab = 'Account';

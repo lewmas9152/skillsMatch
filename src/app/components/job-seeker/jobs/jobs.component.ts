@@ -7,7 +7,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
   selector: 'app-jobs',
   imports: [CommonModule, NavigationComponent], // Add necessary imports here
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.css', '../job-seeker.component.css'],
+  styleUrls: ['./jobs.component.css', '../../../../styles.css'],
 })
 export class JobsComponent implements OnInit {
   job = {

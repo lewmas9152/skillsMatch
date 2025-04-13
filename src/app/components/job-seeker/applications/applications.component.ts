@@ -19,7 +19,7 @@ interface Application {
   selector: 'app-applications',
   imports: [CommonModule, NavigationComponent], // Add necessary imports here
   templateUrl: './applications.component.html',
-  styleUrls: ['./applications.component.css','../job-seeker.component.css'],
+  styleUrls: ['./applications.component.css','../../../../styles.css'],
 })
 export class ApplicationsComponent implements OnInit {
   applications: Application[] = [

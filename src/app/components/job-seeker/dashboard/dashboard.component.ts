@@ -26,7 +26,7 @@ interface Interview {
   standalone: true,
   imports: [CommonModule, RouterModule, NavigationComponent],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css', '../job-seeker.component.css'],
+  styleUrls: ['./dashboard.component.css', '../../../../styles.css'],
 })
 export class DashboardComponent implements OnInit {
   userName = 'Jessica';

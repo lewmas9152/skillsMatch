@@ -9,7 +9,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   imports: [CommonModule, FormsModule, NavigationComponent], // Add necessary imports here
-  styleUrls: ['./skills.component.css', '../job-seeker.component.css'],
+  styleUrls: ['./skills.component.css', '../../../../styles.css'],
 })
 export class SkillsComponent implements OnInit {
   targetRole: string = 'Senior Frontend Developer';

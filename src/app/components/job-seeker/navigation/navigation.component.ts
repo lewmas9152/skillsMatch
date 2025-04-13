@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css', '../job-seeker.component.css'],
+  styleUrls: ['./navigation.component.css', '../../../../styles.css'],
 })
 export class NavigationComponent {
   userName = 'JS'; // User initials for the avatar

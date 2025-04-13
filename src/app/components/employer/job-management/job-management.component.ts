@@ -18,7 +18,7 @@ interface Job {
   selector: 'app-job-management',
   imports: [ReactiveFormsModule, CommonModule, NavigationComponent],
   templateUrl: './job-management.component.html',
-  styleUrls: ['./job-management.component.css', '../employer.component.css'],
+  styleUrls: ['./job-management.component.css', '../../../../styles.css'],
 })
 export class JobManagementComponent implements OnInit {
   jobs: Job[] = [];

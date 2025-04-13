@@ -8,7 +8,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
   selector: 'app-settings',
   imports: [CommonModule,ReactiveFormsModule, NavigationComponent, FormsModule],
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css', '../employer.component.css'],
 })
 export class SettingsComponent implements OnInit {
   profileForm: FormGroup;

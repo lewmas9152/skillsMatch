@@ -11,7 +11,7 @@ Chart.register(...registerables);
   selector: 'app-dashboard',
   imports: [CommonModule, NavigationComponent],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css', '../admin.component.css'],
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
   private platformId = inject(PLATFORM_ID);

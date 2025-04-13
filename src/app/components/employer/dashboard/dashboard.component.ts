@@ -7,7 +7,7 @@ import { NavigationComponent } from "../navigation/navigation.component";
   standalone: true,
   imports: [CommonModule, NavigationComponent],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css', '../employer.component.css'],
 })
 export class DashboardComponent {
   userName = 'John';

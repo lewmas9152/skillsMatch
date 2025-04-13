@@ -18,7 +18,7 @@ interface Candidate {
   selector: 'app-candidates',
   imports:[ReactiveFormsModule, CommonModule, NavigationComponent],
   templateUrl: './candidates.component.html',
-  styleUrls: ['./candidates.component.css']
+  styleUrls: ['./candidates.component.css', '../employer.component.css'],
 })
 export class CandidatesComponent implements OnInit {
   candidates: Candidate[] = [];

@@ -9,7 +9,7 @@ import { UserService } from '../../../services/user.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', '../landing-pages.component.css'],
 })
 export class LoginComponent {
   loginForm: FormGroup;

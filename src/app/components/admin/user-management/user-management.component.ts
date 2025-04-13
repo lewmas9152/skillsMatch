@@ -17,7 +17,7 @@ interface User {
   selector: 'app-user-management',
   imports: [CommonModule, NavigationComponent],
   templateUrl: './user-management.component.html',
-  styleUrls: ['./user-management.component.css']
+  styleUrls: ['./user-management.component.css', '../admin.component.css'],
 })
 export class UserManagementComponent implements OnInit {
   users: User[] = [];

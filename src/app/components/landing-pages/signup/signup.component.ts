@@ -9,7 +9,7 @@ import { UserService } from '../../../services/user.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css', '../landing-pages.component.css'],
 })
 export class SignupComponent {
   signupForm: FormGroup;

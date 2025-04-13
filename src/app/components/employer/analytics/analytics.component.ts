@@ -11,7 +11,7 @@ Chart.register(...registerables);
   selector: 'app-analytics',
   imports: [CommonModule, NavigationComponent],
   templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.css']
+  styleUrls: ['./analytics.component.css', '../employer.component.css'],
 })
 export class AnalyticsComponent implements OnInit {
   // Key metrics

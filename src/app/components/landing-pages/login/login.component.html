@@ -34,7 +34,7 @@
         </div>
       </div>
       
-      <a routerLink="job-seeker/dashboard" class="login-btn">Login</a>
+      <button [routerLink]="['/job-seeker/dashboard']" class="login-btn" [disabled]="loginForm.invalid">Login</button>
       
       <div class="separator">
         <span class="separator-line"></span>

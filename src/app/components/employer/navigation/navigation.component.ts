@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class NavigationComponent {
   userInitials = 'JS'; // User initials for the avatar
+  isMobileMenuOpen = false; // Add this property for mobile menu state
   
   menuItems = [
     { icon: '📊', label: 'Dashboard', route: '/employer/dashboard', active: true },
@@ -20,4 +21,9 @@ export class NavigationComponent {
     { icon: '📈', label: 'Analytics', route: '/employer/analytics', active: false },
     { icon: '⚙️', label: 'Settings', route: '/employer/settings', active: false }
   ];
+
+  // Add this method to toggle mobile menu
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 }

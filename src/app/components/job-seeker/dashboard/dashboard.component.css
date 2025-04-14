@@ -319,3 +319,23 @@
   .status-icon.blue {
   background-color: #4794f8;
 }
+
+
+@media (max-width: 1024px) {
+  .app-header {
+    left: 150px;
+  }
+  
+  .app-sidebar {
+    width: 150px;
+  }
+  
+  .content-area {
+    margin-left: 150px;
+  }
+  
+  .app-header .search-bar input {
+    width: 180px;
+  }
+}
+

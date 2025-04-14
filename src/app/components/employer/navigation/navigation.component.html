@@ -1,5 +1,16 @@
-<!-- Header -->
-<div class="header">
+<!-- Mobile Header (add this for responsive design) -->
+<div class="mobile-header">
+  <div class="hamburger" (click)="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="logo mobile-logo">JobMatcher</div>
+  <div class="mobile-avatar">{{userInitials}}</div>
+</div>
+
+<!-- Desktop Header -->
+<div class="app-header">
   <div class="search-bar">
     <input type="text" placeholder="Search" />
   </div>
@@ -10,14 +21,20 @@
 </div>
 
 <!-- Sidebar -->
-<div class="sidebar">
-  <div class="logo">JobMatcher</div>
+<div class="app-sidebar" [class.open]="isMobileMenuOpen">
+  <div class="sidebar-header">
+    <div class="logo">JobMatcher</div>
+    <div class="close-menu" (click)="toggleMobileMenu()">✕</div>
+  </div>
 
   <a *ngFor="let item of menuItems" 
        [routerLink]="item.route"
        routerLinkActive="active"
-       class="menu-item">
+       class="menu-item nav-link">
     <i class="icon">{{item.icon}}</i>
     <span>{{item.label}}</span>
-</a>
+  </a>
 </div>
+
+<!-- Mobile overlay (add this for responsive design) -->
+<div class="mobile-overlay" *ngIf="isMobileMenuOpen" (click)="toggleMobileMenu()"></div>

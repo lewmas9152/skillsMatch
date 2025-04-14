@@ -46,7 +46,11 @@ jobs:
             path: ./dist
 
         - name: Output Contents
-          run: ls
+          run: |
+            echo "Root directory:"
+            ls -la
+            echo "Dist directory:"
+            ls -la ./dist
         
         - name: Deploy
           id: deploy
